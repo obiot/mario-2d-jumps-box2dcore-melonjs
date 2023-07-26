@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "",
+  "images": [
+    {
+      "name": "coin.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/coin.png",
+      "folder": ""
+    },
+    {
+      "name": "enemy_dead.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/enemy_dead.png",
+      "folder": ""
+    },
+    {
+      "name": "enemy_walk_0.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/enemy_walk_0.png",
+      "folder": ""
+    },
+    {
+      "name": "enemy_walk_1.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/enemy_walk_1.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_dead.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_dead.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_flag_0.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_flag_0.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_flag_1.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_flag_1.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_idle.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_idle.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_jump.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_jump.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_run_0.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_run_0.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_run_1.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_run_1.png",
+      "folder": ""
+    },
+    {
+      "name": "mario_run_2.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/mario_run_2.png",
+      "folder": ""
+    },
+    {
+      "name": "simple_level.png",
+      "path": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img/free-texture-packer/simple_level.png",
+      "folder": ""
+    }
+  ],
+  "folders": [],
+  "packOptions": {
+    "textureName": "texture",
+    "textureFormat": "png",
+    "removeFileExtension": false,
+    "prependFolderName": true,
+    "scale": 1,
+    "filter": "none",
+    "exporter": "JSON (hash)",
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "fileName": "pack-result",
+    "savePath": "",
+    "width": 2048,
+    "height": 2048,
+    "fixedSize": false,
+    "powerOfTwo": false,
+    "padding": 0,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "trim",
+    "alphaThreshold": 0,
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}

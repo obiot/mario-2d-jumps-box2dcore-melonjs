@@ -1,4 +1,4 @@
-import { Stage, game, ColorLayer, BitmapText  } from 'melonjs';
+import { Stage, game, ColorLayer, level  } from 'melonjs';
 
 class PlayScreen extends Stage {
     /**
@@ -7,15 +7,9 @@ class PlayScreen extends Stage {
     onResetEvent() {
         // add a gray background to the default Stage
         game.world.addChild(new ColorLayer("background", "#202020"));
-
-        // add a font text display object
-        game.world.addChild(new BitmapText(game.viewport.width / 2, game.viewport.height / 2,  {
-            font : "PressStart2P",
-            size : 3.0,
-            textBaseline : "middle",
-            textAlign : "center",
-            text : "Mario 2d Jumps !"
-        }));
+        
+        // load a level
+        level.load("simple-level");
     }
 };
 

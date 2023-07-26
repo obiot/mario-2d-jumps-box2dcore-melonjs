@@ -1,5 +1,6 @@
 import {
     audio,
+    game, 
     loader,
     state,
     device,
@@ -12,12 +13,14 @@ import {
 
 import 'index.css';
 
-import data from './data.js';
+import global from './js/global.js';
 
 import PlayScreen from 'js/stage/play.js';
 import PlayerEntity from 'js/renderables/player.js';
+import b2Collider from "js/renderables/box2d.js";
 
 import DataManifest from 'manifest.js';
+import initBox2D from './js/init-box2d.js';
 
 
 device.onReady(() => {
@@ -39,6 +42,12 @@ device.onReady(() => {
     // Initialize the audio.
     audio.init("mp3,ogg");
 
+    // disable built-in physic engine
+    game.world.physic = "none";
+    
+    // initialize the box2D world
+    global.world = initBox2D();
+
     // allow cross-origin for image/texture loading
     loader.crossOrigin = "anonymous";
 
@@ -47,12 +56,16 @@ device.onReady(() => {
         // set the user defined game stages
         state.set(state.PLAY, new PlayScreen());
 
-        // add our player entity in the entity pool
-        pool.register("mainPlayer", PlayerEntity);
+        // declare box2d collider into the pool
+        pool.register("ground", b2Collider);
+        pool.register("pipe", b2Collider);
+        pool.register("bricks", b2Collider);
+        pool.register("side2", b2Collider);
+        pool.register("side1", b2Collider);
+        pool.register("side0", b2Collider);
 
         // load the texture atlas file
-        // this will be used by renderable object later
-        data.texture = new TextureAtlas(
+        global.texture = new TextureAtlas(
             loader.getJSON("texture"),
             loader.getImage("texture")
         );

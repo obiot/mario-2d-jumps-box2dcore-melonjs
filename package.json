@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@box2d/core": "^0.10.0",
+    "@box2d/debug-draw": "^0.10.0",
     "@melonjs/debug-plugin": "^14.6.5",
     "core-js": "^3.31.1",
     "css-loader": "^6.8.1",

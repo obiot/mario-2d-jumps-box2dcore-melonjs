@@ -11,10 +11,10 @@ class PlayScreen extends Stage {
         // add a font text display object
         game.world.addChild(new BitmapText(game.viewport.width / 2, game.viewport.height / 2,  {
             font : "PressStart2P",
-            size : 4.0,
+            size : 3.0,
             textBaseline : "middle",
             textAlign : "center",
-            text : "Hello World !"
+            text : "Mario 2d Jumps !"
         }));
     }
 };

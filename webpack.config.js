@@ -8,7 +8,7 @@ require("@babel/register");
 module.exports = {
 	entry: "./src/index.js",
 	output: {
-		path: __dirname + "/public",
+		path: __dirname + "/docs",
 		filename: "bundle.js",
 	},
 	module: {
@@ -88,7 +88,7 @@ module.exports = {
 	},
 	devServer: {
 		static: {
-			directory: path.join(__dirname, "public"),
+			directory: path.join(__dirname, "docs"),
 		},
 		compress: true,
 		hot: true,

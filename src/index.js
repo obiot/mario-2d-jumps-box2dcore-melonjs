@@ -16,7 +16,6 @@ import 'index.css';
 import global from './js/global.js';
 
 import PlayScreen from 'js/stage/play.js';
-import PlayerEntity from 'js/renderables/player.js';
 import b2Collider from "js/renderables/box2d.js";
 
 import DataManifest from 'manifest.js';
@@ -26,7 +25,7 @@ import initBox2D from './js/init-box2d.js';
 device.onReady(() => {
 
     // initialize the display canvas once the device/browser is ready
-    if (!video.init(320, 240, {parent : "screen", scaleMethod: "flex-height"})) {
+    if (!video.init(640, 480, {parent : "screen", scale : "auto", renderer: video.AUTO})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -44,9 +43,9 @@ device.onReady(() => {
 
     // disable built-in physic engine
     game.world.physic = "none";
-    
+
     // initialize the box2D world
-    global.world = initBox2D();
+    global.b2World = initBox2D();
 
     // allow cross-origin for image/texture loading
     loader.crossOrigin = "anonymous";

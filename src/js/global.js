@@ -7,7 +7,7 @@ let global = {
     texture : null,
 
     // a reference to the box2d world
-    world : null,
+    b2World : null,
 
     // default pixels per meter ratio
     pixelsPerMeter : 30

@@ -12,13 +12,12 @@ class PlayScreen extends Stage {
         // load a level
         level.load("simple-level");
 
-        // instantiate the debugDrawer
-        this.debugDrawer = new DebugDrawer(game.world.width, game.world.height);
-        // and add it to the game world
-        game.world.addChild(this.debugDrawer);
+        if (process.env.NODE_ENV === 'development') {
+            // instantiate a debugDrawer
+            game.world.addChild(new DebugDrawer(game.world.width, game.world.height));
+        }
     }
 
-    
     onDestroyEvent() {
 
     }

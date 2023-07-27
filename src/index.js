@@ -20,12 +20,13 @@ import b2Collider from "./js/renderables/collider.js";
 
 import DataManifest from 'manifest.js';
 import initBox2D from './js/init-box2d.js';
+import PlayerEntity from './js/renderables/player.js';
 
 
 device.onReady(() => {
 
     // initialize the display canvas once the device/browser is ready
-    if (!video.init(640, 480, {parent : "screen", scale : "auto", renderer: video.AUTO})) {
+    if (!video.init(320, 240, {parent : "screen", scale : "auto", renderer: video.AUTO})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -56,6 +57,7 @@ device.onReady(() => {
         state.set(state.PLAY, new PlayScreen());
 
         // declare box2d collider into the pool
+        pool.register("player", PlayerEntity);
         pool.register("ground", b2Collider);
         pool.register("pipe", b2Collider);
         pool.register("bricks", b2Collider);

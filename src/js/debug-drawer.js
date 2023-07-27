@@ -14,7 +14,7 @@ export default class DebugDrawer extends Renderable {
 
     update(dt) {
         this.debugDraw.Prepare(this.width / 2, this.height / 2, 1, false);
-        DrawShapes(this.debugDraw, global.b2World, false);
+        //DrawShapes(this.debugDraw, global.b2World, false);
         DrawAABBs(this.debugDraw, global.b2World, false);
         this.debugDraw.Finish();
         return true;

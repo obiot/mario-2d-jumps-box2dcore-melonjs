@@ -22,19 +22,15 @@ class b2Collider extends Renderable {
 
         const w = settings.width;
         const h = settings.height;
-        const position = new Vector2d();
         const scale = new Vector3d();
-        const fieldSize = level.getCurrentLevel().width;
-        const x0 = fieldSize / 2;
-        const y0 = fieldSize / 2;
+        const x0 = level.getCurrentLevel().width / 2;
+        const y0 = level.getCurrentLevel().height / 2;
 
 
         switch (settings.name) {
             case "ground":
             case "pipe":
             case "bricks" :
-                position.x = (x - x0) + w / 2;
-                position.y = (y0 - y) - h / 2;
                 scale.x = w;  
                 scale.y = h;
                 scale.z = 1;
@@ -42,6 +38,7 @@ class b2Collider extends Renderable {
             case "side0":
             case "side1":
             case "side2":
+                const position = new Vector2d();
                 position.x = (x - x0) + w / 2;
                 position.y = (y0 - y) - h / 2;
                 sidePositions.push(position);
@@ -58,14 +55,14 @@ class b2Collider extends Renderable {
         this.colliderBody = global.b2World.CreateBody({
             type: b2BodyType.b2_staticBody,
             position: {
-                x: position.x / global.pixelsPerMeter,
-                y: position.y / global.pixelsPerMeter
+                x: this.pos.x + w / 2, // adjust for tiled origin point
+                y: this.pos.y + h / 2 // adjust for tiled origin point
             }
         });
 
         const colliderShape = new b2PolygonShape();
 
-        colliderShape.SetAsBox(scale.x / 2 / global.pixelsPerMeter, scale.y / 2 / global.pixelsPerMeter);
+        colliderShape.SetAsBox(scale.x / 2, scale.y / 2);
 
         const colliderFixture = this.colliderBody.CreateFixture({ shape: colliderShape });
         

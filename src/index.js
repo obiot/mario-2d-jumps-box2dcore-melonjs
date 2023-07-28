@@ -60,14 +60,14 @@ device.onReady(() => {
         // enable keyboard
         input.bindKey(input.KEY.LEFT,  "left");
         input.bindKey(input.KEY.RIGHT, "right");
-        input.bindKey(input.KEY.X,     "jump", true);
-        input.bindKey(input.KEY.UP,    "jump", true);
-        input.bindKey(input.KEY.SPACE, "jump", true);
+        input.bindKey(input.KEY.X,     "jump");
+        input.bindKey(input.KEY.UP,    "jump");
+        input.bindKey(input.KEY.SPACE, "jump");
         input.bindKey(input.KEY.DOWN,  "down");
 
         input.bindKey(input.KEY.A,     "left");
         input.bindKey(input.KEY.D,     "right");
-        input.bindKey(input.KEY.W,     "jump", true);
+        input.bindKey(input.KEY.W,     "jump");
         input.bindKey(input.KEY.S,     "down");
 
         // Start the game.

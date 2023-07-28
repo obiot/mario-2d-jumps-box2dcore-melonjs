@@ -44,7 +44,7 @@ class PlayerEntity extends Renderable {
         //this.playerBody.SetFixedRotation(true);
 
         // create the physic body shape based on the renderable size
-        this.playerFixture = this.playerBody.CreateFixture({ shape: createCircleShape(7), density: 10});
+        this.playerFixture = this.playerBody.CreateFixture({ shape: createCircleShape(7), density: 0.1});
         this.playerFixture.SetRestitution(0);
 
         // setup the collision/contact listeners
@@ -55,8 +55,10 @@ class PlayerEntity extends Renderable {
      * update the entity
      */
     update(dt) {
+        
         const vel = this.playerBody.GetLinearVelocity();
-        if (input.isKeyPressed("left") && !this.touchLeft) {
+
+        if (input.isKeyPressed("left") && !this.touchLeft) {            
             vel.x = -1;
             this.currentDir = directions.left;
             this.currentPlayerState = playerStates.run;
@@ -64,18 +66,17 @@ class PlayerEntity extends Renderable {
             vel.x = 1;
             this.currentDir = directions.right;
             this.currentPlayerState = playerStates.run;
-        } else {
-            vel.x = 0;
-            this.currentPlayerState = playerStates.idle;
         }
         
         if (input.isKeyPressed("jump")) {
-            if (Math.abs(vel.y) === 0.0) {
-                vel.y = -5;
-                this.currentPlayerState = playerStates.jump;
-            }
+            vel.y = -50;
+            this.currentPlayerState = playerStates.jump;
         }
 
+        if (vel.x === 0 && vel.x === 0) {
+            this.currentPlayerState = playerStates.idle;
+        };
+        
         this.playerBody.SetLinearVelocity(vel);
 
         this.sprite.setCurrentAnimation(this.currentPlayerState);

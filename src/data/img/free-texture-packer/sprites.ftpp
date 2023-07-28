@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "",
+  "savePath": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img",
   "images": [
     {
       "name": "coin.png",
@@ -76,14 +76,14 @@
     "textureFormat": "png",
     "removeFileExtension": false,
     "prependFolderName": true,
-    "scale": 1,
-    "filter": "none",
-    "exporter": "JSON (hash)",
     "base64Export": false,
     "tinify": false,
     "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "JSON (array)",
     "fileName": "pack-result",
-    "savePath": "",
+    "savePath": "/Users/obiot/Documents/GitHub/mario-2d-jumps-box2dcore-melonjs/src/data/img",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,
@@ -93,7 +93,7 @@
     "allowRotation": true,
     "allowTrim": true,
     "trimMode": "trim",
-    "alphaThreshold": 0,
+    "alphaThreshold": "0",
     "detectIdentical": true,
     "packer": "MaxRectsBin",
     "packerMethod": "BestShortSideFit"

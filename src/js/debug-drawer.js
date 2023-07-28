@@ -30,7 +30,7 @@ export default class DebugDrawer extends Renderable {
                     renderer.currentCompositor.unbindTexture2D(null, this.glTextureUnit);
                 }
                 this.debugDraw.Prepare(this.width / 2, this.height / 2, 1, false);
-                //DrawAABBs(this.debugDraw, global.b2World, false);
+                DrawAABBs(this.debugDraw, global.b2World, false);
                 DrawShapes(this.debugDraw, global.b2World, false);
                 this.debugDraw.Finish();
                 renderer.drawImage(this.offScreenCanvas.canvas);

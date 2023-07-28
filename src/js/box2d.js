@@ -20,6 +20,10 @@ export function initBox2D() {
     return world;
 }
 
+export function GetWorld() {
+    return world;
+}
+
 // create a static body at the given position
 export function createStaticBody(x, y, userData) {
     const body = world.CreateBody({

@@ -3,10 +3,7 @@
  */
 let global = {
     // a reference to the texture atlas
-    texture : null,
-
-    // a reference to the box2d world
-    b2World : null
+    texture : null
 };
 
 export default global;

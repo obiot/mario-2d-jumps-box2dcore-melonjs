@@ -1,4 +1,4 @@
-import {audio, game, loader, state, device, video, utils, plugin, pool, TextureAtlas } from "melonjs";
+import { audio, game, loader, state, device, video, utils, plugin, pool, TextureAtlas } from "melonjs";
 import global from "./js/global.js";
 import PlayScreen from "js/stage/play.js";
 import b2Collider from "./js/renderables/collider.js";

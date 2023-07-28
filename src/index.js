@@ -1,27 +1,13 @@
-import {
-    audio,
-    game, 
-    loader,
-    state,
-    device,
-    video,
-    utils,
-    plugin,
-    pool,
-    TextureAtlas
-} from 'melonjs';
+import {audio, game, loader, state, device, video, utils, plugin, pool, TextureAtlas } from "melonjs";
+import global from "./js/global.js";
+import PlayScreen from "js/stage/play.js";
+import b2Collider from "./js/renderables/collider.js";
+import PlayerEntity from "./js/renderables/player.js";
+import DataManifest from "manifest.js";
+
+import { initBox2D } from "./js/box2d.js";
 
 import 'index.css';
-
-import global from './js/global.js';
-
-import PlayScreen from 'js/stage/play.js';
-import b2Collider from "./js/renderables/collider.js";
-
-import DataManifest from 'manifest.js';
-import initBox2D from './js/init-box2d.js';
-import PlayerEntity from './js/renderables/player.js';
-
 
 device.onReady(() => {
 

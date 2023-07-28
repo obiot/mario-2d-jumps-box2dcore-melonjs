@@ -1,6 +1,6 @@
 {
-  "name": "melonjs-es6-boilerplate",
-  "version": "1.29.0",
+  "name": "mario-2d-jumps-box2dcore-melonjs",
+  "version": "1.0.0",
   "main": "src/index.js",
   "author": "Olivier Biot",
   "license": "MIT",

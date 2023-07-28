@@ -1,4 +1,4 @@
-import { audio, game, loader, state, device, video, utils, plugin, pool, TextureAtlas } from "melonjs";
+import { audio, game, loader, state, device, video, utils, input, plugin, pool, TextureAtlas } from "melonjs";
 import global from "./js/global.js";
 import PlayScreen from "js/stage/play.js";
 import b2Collider from "./js/renderables/collider.js";
@@ -56,6 +56,19 @@ device.onReady(() => {
             loader.getJSON("texture"),
             loader.getImage("texture")
         );
+
+        // enable keyboard
+        input.bindKey(input.KEY.LEFT,  "left");
+        input.bindKey(input.KEY.RIGHT, "right");
+        input.bindKey(input.KEY.X,     "jump", true);
+        input.bindKey(input.KEY.UP,    "jump", true);
+        input.bindKey(input.KEY.SPACE, "jump", true);
+        input.bindKey(input.KEY.DOWN,  "down");
+
+        input.bindKey(input.KEY.A,     "left");
+        input.bindKey(input.KEY.D,     "right");
+        input.bindKey(input.KEY.W,     "jump", true);
+        input.bindKey(input.KEY.S,     "down");
 
         // Start the game.
         state.change(state.PLAY);

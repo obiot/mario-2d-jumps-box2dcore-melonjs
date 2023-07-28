@@ -13,20 +13,8 @@ class PlayerEntity extends Renderable {
         // call the parent constructor
         super(x, y , 16, 16);
 
+        // match tiled origin point (0,0);
         this.anchorPoint.set(0, 0);
-
-        // enable keyboard
-        input.bindKey(input.KEY.LEFT,  "left");
-        input.bindKey(input.KEY.RIGHT, "right");
-        input.bindKey(input.KEY.X,     "jump", true);
-        input.bindKey(input.KEY.UP,    "jump", true);
-        input.bindKey(input.KEY.SPACE, "jump", true);
-        input.bindKey(input.KEY.DOWN,  "down");
-
-        input.bindKey(input.KEY.A,     "left");
-        input.bindKey(input.KEY.D,     "right");
-        input.bindKey(input.KEY.W,     "jump", true);
-        input.bindKey(input.KEY.S,     "down");
 
         // create a sprite
         this.sprite = global.texture.createAnimationFromName([
@@ -40,6 +28,7 @@ class PlayerEntity extends Renderable {
         this.sprite.addAnimation("jump",  [{ name: "mario_jump.png" }]);
         this.sprite.setCurrentAnimation("idle");
 
+        // match sprite position with the parent renderable
         this.sprite.anchorPoint.set(0, 0);
 
         // status flags

@@ -1,12 +1,11 @@
-import { input, Renderable } from "melonjs";
-import { b2BodyType, b2CircleShape, b2PolygonShape, b2ContactListener, b2Vec2 } from "@box2d/core";
 import global from "../global.js";
+import { input, Renderable } from "melonjs";
+import { createCircleShape, createDynamicBody, SetContactListener } from "../box2d.js";
 
 const directions = { left: -1, right: 1 };
 const playerStates = { idle: "idle", run: "run", jump: "jump" };
 
 class PlayerEntity extends Renderable {
-
     /**
      * constructor
      */
@@ -51,53 +50,16 @@ class PlayerEntity extends Renderable {
         this.touchBottom = false;
         
         // create the physic body
-        this.playerBody = global.b2World.CreateBody({
-            type: b2BodyType.b2_dynamicBody,
-            position: {
-                x: this.pos.x + this.sprite.width / 2,
-                y: this.pos.y + this.sprite.height / 2
-            },
-            bullet: true
-        });
+        this.playerBody = createDynamicBody(this.pos.x + this.sprite.width / 2, this.pos.y + this.sprite.height / 2, "player");
         this.playerBody.SetLinearDamping(1);
-        this.playerBody.SetUserData("player");
         //this.playerBody.SetFixedRotation(true);
 
         // create the physic body shape based on the renderable size
-        const playerShape = new b2CircleShape(7);
-        const playerFixture = this.playerBody.CreateFixture({ shape: playerShape, density: 10});
-        playerFixture.SetRestitution(0);
+        this.playerFixture = this.playerBody.CreateFixture({ shape: createCircleShape(7), density: 10});
+        this.playerFixture.SetRestitution(0);
 
-        // setup the contact listener
-        b2ContactListener.BeginContact = (contact) => {
-            const name = contact.GetFixtureA().GetBody().GetUserData();
-
-            // cancel horizontal velocity if touching a wall/pipe
-            if (name !== "ground") {
-                const vel = this.playerBody.GetLinearVelocity();
-                if (vel.x < 0) {
-                    this.touchLeft = true;
-                    vel.x = 0;
-                } else if (vel.x > 0) {
-                    this.touchRight = true;
-                    vel.x = 0;
-                }
-                this.playerBody.SetLinearVelocity(vel);
-            }
-        }
-
-        b2ContactListener.EndContact = (contact) => {
-            const name = contact.GetFixtureA().GetBody().GetUserData();
-            if (name !== "ground") {
-                this.touchLeft = false;
-                this.touchRight = false;
-            }
-        }
-        
-        b2ContactListener.PreSolve = (contact, oldManifold) => {}
-        b2ContactListener.PostSolve = (contact, impulse) => {}
-
-        global.b2World.SetContactListener(b2ContactListener);
+        // setup the collision/contact listeners
+        SetContactListener(this.beginContact.bind(this), this.endContact.bind(this));
     }
 
     /**
@@ -154,6 +116,39 @@ class PlayerEntity extends Renderable {
         this.sprite.draw(renderer);
         this.sprite.postDraw(renderer);
         renderer.restore();
+    }
+
+    /**
+     * callback when the player begin to touch another object
+     * @param {b2Contact} contact 
+     */
+    beginContact(contact) {
+        const name = contact.GetFixtureA().GetBody().GetUserData();
+
+        // cancel horizontal velocity if touching a wall/pipe
+        if (name !== "ground") {
+            const vel = this.playerBody.GetLinearVelocity();
+            if (vel.x < 0) {
+                this.touchLeft = true;
+                vel.x = 0;
+            } else if (vel.x > 0) {
+                this.touchRight = true;
+                vel.x = 0;
+            }
+            this.playerBody.SetLinearVelocity(vel);
+        }
+    }
+
+    /**
+     * callback when the player end touching another object
+     * @param {b2Contact} contact 
+     */
+    endContact = (contact) => {
+        const name = contact.GetFixtureA().GetBody().GetUserData();
+        if (name !== "ground") {
+            this.touchLeft = false;
+            this.touchRight = false;
+        }
     }
 };
 

@@ -1,4 +1,4 @@
-import { Stage, game, ColorLayer, level  } from "melonjs";
+import { Stage, game, level  } from "melonjs";
 import DebugDrawer from "../debug-drawer";
 
 class PlayScreen extends Stage {

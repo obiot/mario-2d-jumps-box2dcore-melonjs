@@ -21,14 +21,7 @@ export default class DebugDrawer extends Renderable {
         if (plugins.debugPanel && plugins.debugPanel.panel.visible) {
             // skip if the world is empty
             if (GetWorld().GetBodyCount() > 0) {
-                // TODO: replace with `invalidate(renderer)` once version 15.8 is published
-                if (typeof renderer.gl !== "undefined") {
-                    // make sure the right compositor is active
-                    renderer.setCompositor("quad");
-                    // invalidate the previous corresponding texture so that it can reuploaded once changed
-                    this.glTextureUnit = renderer.cache.getUnit(renderer.cache.get(this.offScreenCanvas.canvas));
-                    renderer.currentCompositor.unbindTexture2D(null, this.glTextureUnit);
-                }
+                this.offScreenCanvas.invalidate(renderer);
                 this.debugDraw.Prepare(this.width / 2, this.height / 2, 1, false);
                 DrawAABBs(this.debugDraw, GetWorld(), false);
                 DrawShapes(this.debugDraw, GetWorld(), false);

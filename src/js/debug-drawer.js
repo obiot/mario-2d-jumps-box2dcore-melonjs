@@ -10,6 +10,16 @@ export default class DebugDrawer extends Renderable {
         this.offScreenCanvas = new CanvasTexture(width, height);
         this.debugDraw = new DebugDraw(this.offScreenCanvas.context);
         this.anchorPoint.set(0, 0);
+
+        // checkbox on the html page to display colliders
+        this.showColliders = false;
+        this.showCollidersCheckbox = document.getElementById("colliderCheckBox");
+        if (this.showCollidersCheckbox !== null) {
+            this.showColliders = this.showCollidersCheckbox.checked;
+            this.showCollidersCheckbox.onchange = () => {
+                this.showColliders = this.showCollidersCheckbox.checked;
+            };
+        }
     }
 
     update(dt) {
@@ -18,7 +28,7 @@ export default class DebugDrawer extends Renderable {
 
     draw(renderer) {
         // only draw if the debug panel is visible
-        if (plugins.debugPanel && plugins.debugPanel.panel.visible) {
+        if ((plugins.debugPanel && plugins.debugPanel.panel.visible) || this.showColliders) {
             // skip if the world is empty
             if (GetWorld().GetBodyCount() > 0) {
                 this.offScreenCanvas.invalidate(renderer);

@@ -32,7 +32,7 @@ device.onReady(() => {
     game.world.physic = "none";
 
     // initialize the box2D world
-    global.b2World = initBox2D();
+    initBox2D();
 
     // allow cross-origin for image/texture loading
     loader.crossOrigin = "anonymous";

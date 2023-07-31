@@ -113,10 +113,13 @@ class PlayerEntity extends Renderable {
      * @param {b2Contact} contact 
      */
     beginContact(contact) {
-        const name = contact.GetFixtureA().GetBody().GetUserData();
+        const nameA = contact.GetFixtureA().GetBody().GetUserData();
+        const nameB = contact.GetFixtureB().GetBody().GetUserData();
+
+        console.log(`"${nameA}" <-> "${nameB}"`);
 
         // cancel horizontal velocity if touching a wall/pipe
-        if (name !== "ground") {
+        if (nameA !== "ground") {
             const vel = this.playerBody.GetLinearVelocity();
             if (vel.x < 0) {
                 this.touchLeft = true;
@@ -134,8 +137,8 @@ class PlayerEntity extends Renderable {
      * @param {b2Contact} contact 
      */
     endContact = (contact) => {
-        const name = contact.GetFixtureA().GetBody().GetUserData();
-        if (name !== "ground") {
+        const nameA = contact.GetFixtureA().GetBody().GetUserData();
+        if (nameA !== "ground") {
             this.touchLeft = false;
             this.touchRight = false;
         }

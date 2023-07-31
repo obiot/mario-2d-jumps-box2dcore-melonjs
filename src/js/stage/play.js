@@ -20,7 +20,7 @@ class PlayScreen extends Stage {
             size : 1.0,
             textAlign : "center",
             textBaseline : "top",
-            text: ["Mario 2D Jumps", "a Box2D/melonJS demo", "visit us at melonjs.org"],
+            text: ["Mario 2D Demo", "Box2d/core & melonJS demo", "visit us at melonjs.org"],
             fillStyle: "#D3D3D3" // #954B0C"
         });
 

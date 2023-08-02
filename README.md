@@ -1,4 +1,4 @@
-# Mario 2D Jumps (melonJS/Box2D edition)
+# Mario 2D Jumps (melonJS x @Box2D/core edition)
 --------------------------------------
 a port of the "mario-2d-jumps-box2dcore-webgl-js" demo by [8observer8](https://8observer8.github.io) that showcase integration of [melonJS](http://melonjs.org) with [@box2d/core](https://lusito.github.io/box2d.ts/).
 

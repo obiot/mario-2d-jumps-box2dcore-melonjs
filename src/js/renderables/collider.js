@@ -20,8 +20,7 @@ class b2Collider extends Renderable {
         
         // collider fixture
         this.fixture = this.colliderBody.CreateFixture({ shape: createBoxShape(w, h), density: 0.0 });
-        this.fixture.SetFriction(1);
-        this.fixture.SetRestitution(0);
+        //this.fixture.SetFriction(3);
     }
 
 };

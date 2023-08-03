@@ -1,9 +1,12 @@
 import global from "../global.js";
 import { input, Renderable } from "melonjs";
-import { createCircleShape, createDynamicBody, SetContactListener } from "../box2d.js";
+import { createCircleShape, createDynamicBody, SetContactListener, pixelsPerMeter } from "../box2d.js";
 
 const directions = { left: -1, right: 1 };
 const playerStates = { idle: "idle", run: "run", jump: "jump" };
+
+const jumpVelocity = -7 * pixelsPerMeter;
+const walkVelocity = 3 * pixelsPerMeter;
 
 class PlayerEntity extends Renderable {
     /**
@@ -40,12 +43,11 @@ class PlayerEntity extends Renderable {
         
         // create the physic body
         this.playerBody = createDynamicBody(this.pos.x + this.sprite.width / 2, this.pos.y + this.sprite.height / 2, "player");
-        this.playerBody.SetLinearDamping(1);
-        //this.playerBody.SetFixedRotation(true);
+        //this.playerBody.SetLinearDamping(1);
+        this.playerBody.SetFixedRotation(true);
 
         // create the physic body shape based on the renderable size
-        this.playerFixture = this.playerBody.CreateFixture({ shape: createCircleShape(7), density: 0.1});
-        this.playerFixture.SetRestitution(0);
+        this.playerFixture = this.playerBody.CreateFixture({ shape: createCircleShape(7), density: 1});
 
         // setup the collision/contact listeners
         SetContactListener(this.beginContact.bind(this), this.endContact.bind(this));
@@ -55,29 +57,35 @@ class PlayerEntity extends Renderable {
      * update the entity
      */
     update(dt) {
-        
-        const vel = this.playerBody.GetLinearVelocity();
 
         if (input.isKeyPressed("left") && !this.touchLeft) {            
-            vel.x = -1;
+            let vel = this.playerBody.GetLinearVelocity();
+            vel.x = -walkVelocity;
+            this.playerBody.SetLinearVelocity(vel);
             this.currentDir = directions.left;
             this.currentPlayerState = playerStates.run;
         } else if (input.isKeyPressed("right") && !this.touchRight) {
-            vel.x = 1;
+            let vel = this.playerBody.GetLinearVelocity();
+            vel.x = walkVelocity;
+            this.playerBody.SetLinearVelocity(vel);
             this.currentDir = directions.right;
             this.currentPlayerState = playerStates.run;
+        } else {
+            this.currentPlayerState = playerStates.idle;
         }
         
         if (input.isKeyPressed("jump")) {
-            vel.y = -50;
+            let vel = this.playerBody.GetLinearVelocity();
+            vel.y = jumpVelocity;
+            this.playerBody.SetLinearVelocity(vel);
             this.currentPlayerState = playerStates.jump;
         }
 
-        if (vel.x === 0 && vel.x === 0) {
+        let vel = this.playerBody.GetLinearVelocity();
+        
+        if (vel.x === 0 && vel.y === 0) {
             this.currentPlayerState = playerStates.idle;
         };
-        
-        this.playerBody.SetLinearVelocity(vel);
 
         this.sprite.setCurrentAnimation(this.currentPlayerState);
 

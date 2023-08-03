@@ -14,6 +14,8 @@ a tiny mario 2d platformer game built with [melonJS](http://melonjs.org) and the
 * Texture packing
 * Bitmap Font
 
+>Note: this is a proof of concept, not a accurate implementation of a super mario game physic & logic
+
 Building the demo
 -------------------------------------------------------------------------------
 
@@ -29,7 +31,7 @@ then
 
 To Do List
 -------------------------------------------------------------------------------
-- fix jumping issue (see [#1](https://github.com/obiot/mario-2d-jumps-box2dcore-melonjs/issues/1)) ironically !
+- improve player movement and jumping logic to mimic super mario "real physic"
 - add enemies and collectables with proper contact/collision handling
 - add parallax background and other details to the mini level
 
